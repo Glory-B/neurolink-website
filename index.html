@@ -599,7 +599,12 @@
                 <h2 class="section-title">Send Us a Message</h2>
                 <p class="section-subtitle">Fill out the form below and we'll get back to you shortly</p>
 
-                <form class="contact-form reveal" id="contact-form" novalidate>
+                <form class="contact-form reveal" id="contact-form" name="contact" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field" novalidate>
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hidden" style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name <span class="required">*</span></label>
@@ -739,8 +744,10 @@
             <div class="footer-section newsletter-section">
                 <h4>Stay Updated</h4>
                 <p style="margin-bottom: 15px;">Get IT insights delivered to your inbox</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" placeholder="Your email" required aria-label="Email for newsletter">
+                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <input type="email" name="email" placeholder="Your email" required
+                        aria-label="Email for newsletter">
                     <button type="submit" aria-label="Subscribe to newsletter">
                         Subscribe
                     </button>
