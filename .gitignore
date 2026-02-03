@@ -35,3 +35,6 @@ desktop.ini
 
 # Claude artifacts (optional - remove if you want to track these)
 .claude/
+
+# Local Netlify folder
+.netlify
