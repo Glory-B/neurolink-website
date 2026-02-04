@@ -597,33 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// =================================================================
-// Enhanced Form Validation with Blur Events
-// =================================================================
-function initEnhancedContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    const formFields = contactForm.querySelectorAll('input[required], select[required], textarea[required]');
-
-    // Add blur validation to all required fields
-    formFields.forEach(field => {
-        field.addEventListener('blur', () => {
-            if (field.value.trim() !== '') {
-                validateField(field);
-            }
-        });
-
-        // Also validate on input for better UX
-        field.addEventListener('input', () => {
-            if (field.classList.contains('error')) {
-                validateField(field);
-            }
-        });
-    });
-}
-
-document.addEventListener('DOMContentLoaded', initEnhancedContactForm);
+// Enhanced form validation is handled by initContactForm() above (lines 285-360)
 
 // =================================================================
 // Optimized Unified Scroll Handler
@@ -657,8 +631,7 @@ const unifiedScrollHandler = debounce(() => {
     updateSidebarActiveState();
 }, 50);
 
-// Replace multiple scroll listeners with unified one
-window.removeEventListener('scroll', reveal);
+// Unified scroll handler combines reveal and sidebar state updates
 window.addEventListener('scroll', unifiedScrollHandler);
 
 // =================================================================
