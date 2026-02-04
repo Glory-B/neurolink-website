@@ -189,7 +189,7 @@ nav {
 }
 
 .logo img {
-    height: 60px;
+    height: 180px;
     width: auto;
     max-height: 100%;
     display: block;
@@ -3861,23 +3861,35 @@ footer {
 }
 
 .pr-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 12px;
-    background: rgba(30, 41, 59, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(148, 163, 184, 0.1);
-    border-radius: 12px;
-    padding: 20px 24px;
 }
 
 .pr-feature {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--home-radius-pill);
+    background: rgba(15, 23, 42, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.16);
     color: var(--color-text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    list-style: none;
+    transition: var(--transition-fast);
+}
+
+.pr-feature:hover,
+.pr-feature:focus-visible {
+    border-color: rgba(255, 107, 53, 0.45);
+    color: var(--color-text-primary);
+    background: rgba(255, 107, 53, 0.08);
+    transform: translateY(-1px);
 }
 
 .pr-feature::before {
@@ -3994,7 +4006,6 @@ footer {
 /* Responsive - Pricing Page */
 @media (max-width: 768px) {
     .pr-features-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 16px 20px;
     }
