@@ -60,8 +60,8 @@
     <link rel="canonical" href="https://brightedgeit.com.au/privacy.html">
 
     <!-- Preload critical CSS -->
-    <link rel="preload" href="style.min.css" as="style">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="preload" href="style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.min.css"></noscript>
 </head>
 
 <body>
@@ -72,8 +72,7 @@
     <nav role="navigation">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="assets/logo1.png" alt="BrightEdge IT Logo" width="1024" height="682" decoding="async"
-                    fetchpriority="high" style="height: 180px; width: auto;">
+                <img src="assets/logo1.png" alt="BrightEdge IT Logo" width="1024" height="682" decoding="async">
             </a>
             <ul class="nav-links" role="navigation" aria-label="Main navigation">
                 <li><a href="index.html" class="nav-link">Home</a></li>
@@ -84,9 +83,9 @@
                         <a href="cybersecurity.html">Cybersecurity</a>
                         <a href="data-analytics.html">Data Analytics</a>
                         <a href="it-infrastructure.html">IT Infrastructure</a>
-                        <a href="servicedesk.html">IT Support & Service Desk</a>
+                        <a href="servicedesk.html">IT Support</a>
                         <a href="ai-solutions.html">AI Solutions</a>
-                        <a href="digital-transformation.html">Digital Transformation</a>
+                        <a href="digital-transformation.html">Digital Services</a>
                     </div>
                 </li>
                 <li><a href="about.html" class="nav-link">About</a></li>

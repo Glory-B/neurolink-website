@@ -9,7 +9,7 @@
       "@type": "Service",
       "serviceType": "IT Health Check",
       "name": "Free IT Health Check",
-      "description": "Get a complimentary 15-point review of your IT environment. No obligations. No sales pressure. Just clear, practical recommendations.",
+      "description": "Free 15-point IT review for small businesses. Know where you stand and get practical advice you can act on. No obligation.",
       "provider": {
         "@type": "Organization",
         "name": "BrightEdge IT",
@@ -31,12 +31,11 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Get a complimentary 15-point review of your IT environment. No obligations. No sales pressure. Just clear, practical recommendations.">
+    <meta name="description" content="Free IT health check for Perth businesses. A practical 15-point review with clear findings, risks and next steps. No obligation, just clarity.">
     <meta name="keywords" content="IT health check, IT assessment, Microsoft 365 review, security review, IT audit">
     <meta property="og:title" content="Free IT Health Check - BrightEdge IT">
     <meta property="og:description"
-        content="Get a complimentary 15-point review of your IT environment. No obligations. No sales pressure. Just clear, practical recommendations.">
+        content="Free 15-point IT review for small businesses. Know where you stand and get practical advice you can act on. No obligation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://brightedgeit.com.au/health-check.html">
     <meta property="og:image" content="https://brightedgeit.com.au/assets/og-image.jpg">
@@ -45,7 +44,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free IT Health Check - BrightEdge IT">
     <meta name="twitter:description"
-        content="Get a complimentary 15-point review of your IT environment. No obligations. No sales pressure. Just clear, practical recommendations.">
+        content="Free 15-point IT review for small businesses. Know where you stand and get practical advice you can act on. No obligation.">
     <meta name="twitter:image" content="https://brightedgeit.com.au/assets/og-image.jpg">
 
     <meta name="theme-color" content="#0f172a">
@@ -54,9 +53,10 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="manifest" href="/manifest.json">
-    <title>Free IT Health Check - BrightEdge IT</title>
+    <title>Free IT Health Check for Perth Businesses | BrightEdge IT</title>
     <link rel="canonical" href="https://brightedgeit.com.au/health-check.html">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="preload" href="style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.min.css"></noscript>
 </head>
 
 <body>
@@ -65,30 +65,28 @@
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="assets/logo1.png" alt="BrightEdge IT Logo" width="1024" height="682" decoding="async"
-                    fetchpriority="high" style="height: 180px; width: auto;">
+                <img src="assets/logo1.png" alt="BrightEdge IT Logo" width="1024" height="682" decoding="async">
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="services.html" class="active" aria-current="page" aria-haspopup="true"
-                        aria-expanded="false">Services</a>
+                    <a href="services.html" aria-haspopup="true" aria-expanded="false">Services</a>
                     <div class="dropdown-content">
                         <a href="cloud-solutions.html">Cloud Solutions</a>
                         <a href="cybersecurity.html">Cybersecurity</a>
                         <a href="data-analytics.html">Data Analytics</a>
                         <a href="it-infrastructure.html">IT Infrastructure</a>
-                        <a href="servicedesk.html">IT Support & Service Desk</a>
+                        <a href="servicedesk.html">IT Support</a>
                         <a href="ai-solutions.html">AI Solutions</a>
-                        <a href="digital-transformation.html">Digital Transformation</a>
+                        <a href="digital-transformation.html">Digital Services</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="pricing.html" class="active" aria-current="page" aria-haspopup="true"
+                    <a href="pricing.html" class="nav-link active" aria-current="page" aria-haspopup="true"
                         aria-expanded="false">Pricing</a>
                     <div class="dropdown-content">
                         <a href="pricing.html">Pricing Packages</a>
-                        <a href="health-check.html">Free IT Health Check</a>
+                        <a href="health-check.html" class="active" aria-current="page">Free IT Health Check</a>
                     </div>
                 </li>
                 <li><a href="about.html">About</a></li>
@@ -115,156 +113,153 @@
     </nav>
 
     <main id="main-content">
-        <section class="hero">
+        <!-- Hero Section -->
+        <section class="hero pricing-hero">
             <div class="hero-content reveal">
                 <h1>Free IT Health Check</h1>
-                <p>Find out how secure, reliable, and scalable your IT environment really is.</p>
-                <div
-                    style="display: inline-flex; align-items: center; gap: 10px; margin-top: 14px; padding: 6px 14px; border-radius: 999px; background: rgba(255, 107, 53, 0.15); border: 1px solid rgba(255, 107, 53, 0.35); font-size: 0.9rem; color: var(--color-text-primary);">
-                    <span style="color: var(--color-brand-primary); font-weight: 700;">Free 15-point review</span>
-                    <span style="color: var(--color-text-secondary);">• Clear, practical recommendations</span>
+                <p>Know where you stand. Get practical advice you can act on.</p>
+                <div class="hc-badge">
+                    <span class="hc-badge-highlight">Free 15-point review</span>
+                    <span class="hc-badge-text">• No obligation, no sales pitch</span>
+                </div>
+                <div class="hc-hero-ctas">
+                    <a href="contact.html" class="cta-btn">Book Free Health Check</a>
                 </div>
             </div>
         </section>
 
-        <div class="container" style="padding: 0 20px 40px;">
-            <div
-                style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 18px 20px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span
-                        style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-primary);"></span>
-                    <span style="color: var(--color-text-secondary);">Microsoft 365</span>
+        <!-- Unified wrapper for coverage + main content -->
+        <div class="hc-wrap">
+            <!-- Coverage Strip -->
+            <section class="hc-coverage">
+                <div class="hc-coverage-grid">
+                    <div class="hc-chip">
+                        <span class="hc-chip-dot"></span>
+                        Microsoft 365
+                    </div>
+                    <div class="hc-chip">
+                        <span class="hc-chip-dot"></span>
+                        Identity &amp; Access
+                    </div>
+                    <div class="hc-chip">
+                        <span class="hc-chip-dot"></span>
+                        Device Security
+                    </div>
+                    <div class="hc-chip">
+                        <span class="hc-chip-dot"></span>
+                        Backup &amp; Recovery
+                    </div>
+                    <div class="hc-chip">
+                        <span class="hc-chip-dot"></span>
+                        Perth-Based
+                    </div>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span
-                        style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-primary);"></span>
-                    <span style="color: var(--color-text-secondary);">Identity &amp; MFA</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span
-                        style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-primary);"></span>
-                    <span style="color: var(--color-text-secondary);">Endpoint Security</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span
-                        style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-primary);"></span>
-                    <span style="color: var(--color-text-secondary);">Backup &amp; Recovery</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span
-                        style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-primary);"></span>
-                    <span style="color: var(--color-text-secondary);">Perth-Based Support</span>
-                </div>
-            </div>
-        </div>
+            </section>
 
-        <div class="container" style="padding: 60px 20px;">
-            <div class="services-content" style="max-width: 900px; margin: 0 auto;">
-                <article class="service-section">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                style="color: var(--color-brand-primary);">
-                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h2>How Our Health Check Works</h2>
-                            <p style="font-size: 19px; color: #a1a1a6;">Get a complimentary 15-point review of your IT
-                                environment from BrightEdge IT. No obligations. No sales pressure. Just clear,
-                                practical recommendations.</p>
-                        </div>
+            <!-- Main Content - Two Column Layout -->
+            <section class="hc-layout">
+            <div class="hc-grid">
+                <!-- Left Column -->
+                <div class="hc-left">
+                    <div class="hc-section-header">
+                        <h2>How It Works</h2>
+                        <p>We review 15 areas of your IT setup and give you a clear picture of what's working, what's not, and what to do next.</p>
                     </div>
 
-                    <div
-                        style="background: rgba(255, 107, 53, 0.1); border-left: 3px solid var(--color-brand-primary); padding: 20px; margin: 30px 0; border-radius: 8px;">
-                        <h3 style="margin-bottom: 12px; font-size: 1.1rem; color: var(--color-text-primary);">Who It’s
-                            For</h3>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px;">
-                            <li style="color: var(--color-text-secondary); padding-left: 24px; position: relative;">
-                                <span
-                                    style="position: absolute; left: 0; color: var(--color-brand-primary);">&#10004;</span>
-                                Businesses with 1–30 staff
-                            </li>
-                            <li style="color: var(--color-text-secondary); padding-left: 24px; position: relative;">
-                                <span
-                                    style="position: absolute; left: 0; color: var(--color-brand-primary);">&#10004;</span>
-                                Microsoft 365 environments
-                            </li>
-                            <li style="color: var(--color-text-secondary); padding-left: 24px; position: relative;">
-                                <span
-                                    style="position: absolute; left: 0; color: var(--color-brand-primary);">&#10004;</span>
-                                Growing companies without in-house IT
-                            </li>
+                    <!-- Who It's For -->
+                    <div class="hc-callout">
+                        <h3>Who It's For</h3>
+                        <ul class="hc-callout-list">
+                            <li>Small teams (1–30 people)</li>
+                            <li>Using Microsoft 365</li>
+                            <li>No dedicated IT staff</li>
                         </ul>
                     </div>
 
-                    <div class="service-details">
-                        <div class="detail-column">
-                            <h3>What You’ll Receive</h3>
-                            <ul class="feature-list">
-                                <li>A scored checklist</li>
-                                <li>Identified risks</li>
-                                <li>Prioritised improvement areas</li>
-                                <li>Clear next steps</li>
-                            </ul>
-
-                            <div class="pricing-box" style="margin-top: 30px;">
-                                <h4>Get Your Free Health Check</h4>
-                                <p style="margin-bottom: 15px;">Book a quick call to kick off your complimentary review.
-                                </p>
-                                <a href="contact.html" class="cta-btn">Get Your Free Health Check</a>
-                            </div>
-                        </div>
-                        <div class="detail-column">
-                            <h3>15-Point IT Health Check</h3>
-
-                            <h4 style="margin: 20px 0 10px;">Microsoft 365 &amp; Identity</h4>
-                            <ul class="feature-list">
-                                <li>Multi-factor authentication (MFA) enabled for all users</li>
-                                <li>Admin accounts separated from standard user accounts</li>
-                                <li>Conditional Access policies configured</li>
-                                <li>Secure password and sign-in policies enforced</li>
-                            </ul>
-
-                            <h4 style="margin: 20px 0 10px;">Devices &amp; Endpoint Security</h4>
-                            <ul class="feature-list">
-                                <li>Devices centrally managed (Intune, JAMF, or equivalent)</li>
-                                <li>Operating system and application patching automated</li>
-                                <li>Antivirus / Endpoint Detection &amp; Response (EDR) deployed</li>
-                                <li>Full disk encryption enabled</li>
-                            </ul>
-
-                            <h4 style="margin: 20px 0 10px;">Backup &amp; Recovery</h4>
-                            <ul class="feature-list">
-                                <li>Microsoft 365 data backed up</li>
-                                <li>Server and workstation backups configured and monitored</li>
-                                <li>Backup restore process tested</li>
-                            </ul>
-
-                            <h4 style="margin: 20px 0 10px;">Network &amp; Infrastructure</h4>
-                            <ul class="feature-list">
-                                <li>Firewall configured and monitored</li>
-                                <li>Secure Wi-Fi (no shared or weak passwords)</li>
-                            </ul>
-
-                            <h4 style="margin: 20px 0 10px;">Monitoring &amp; Operations</h4>
-                            <ul class="feature-list">
-                                <li>Alerts configured for critical outages or failures</li>
-                                <li>IT asset inventory documented and maintained</li>
-                            </ul>
-                        </div>
+                    <!-- What You'll Receive -->
+                    <div class="hc-benefits">
+                        <h3>What You Get</h3>
+                        <ul>
+                            <li>Scored checklist across 15 areas</li>
+                            <li>Risks flagged and explained</li>
+                            <li>Priorities ranked by impact</li>
+                            <li>Actionable next steps</li>
+                        </ul>
                     </div>
-                </article>
-            </div>
-        </div>
+                </div>
 
+                <!-- Right Column - Accordion -->
+                <div class="hc-right" id="checklist">
+                    <h3>What We Check</h3>
+
+                    <div class="hc-accordion">
+                        <details open>
+                            <summary>Microsoft 365 &amp; Identity</summary>
+                            <div class="hc-accordion-content">
+                                <ul>
+                                    <li>MFA enabled for all users</li>
+                                    <li>Admin accounts separated from day-to-day accounts</li>
+                                    <li>Conditional Access policies in place</li>
+                                    <li>Strong password policies enforced</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Device Security</summary>
+                            <div class="hc-accordion-content">
+                                <ul>
+                                    <li>Devices centrally managed</li>
+                                    <li>Automatic patching configured</li>
+                                    <li>Antivirus or EDR deployed</li>
+                                    <li>Disk encryption enabled</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Backup &amp; Recovery</summary>
+                            <div class="hc-accordion-content">
+                                <ul>
+                                    <li>Microsoft 365 data backed up</li>
+                                    <li>Server and workstation backups monitored</li>
+                                    <li>Restore process tested</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Network &amp; Infrastructure</summary>
+                            <div class="hc-accordion-content">
+                                <ul>
+                                    <li>Firewall configured and monitored</li>
+                                    <li>Wi-Fi secured with strong passwords</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Monitoring &amp; Alerts</summary>
+                            <div class="hc-accordion-content">
+                                <ul>
+                                    <li>Alerts set for outages and failures</li>
+                                    <li>IT asset inventory maintained</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div><!-- /.hc-wrap -->
+
+        <!-- Bottom CTA -->
         <section class="cta-section">
-            <h2>Ready for a Free IT Health Check?</h2>
-            <p>Get clear, practical recommendations with no obligations or sales pressure.</p>
+            <h2>Ready to See Where You Stand?</h2>
+            <p>Book your free health check. No obligation, no pressure.</p>
             <div class="cta-buttons">
-                <a href="contact.html" class="cta-btn">Get Your Free Health Check</a>
+                <a href="contact.html" class="cta-btn">Get Started</a>
+                <a href="pricing.html" class="cta-btn-secondary">View Pricing</a>
             </div>
         </section>
     </main>
@@ -320,7 +315,9 @@
             <div class="footer-section newsletter-section">
                 <h4>Stay Updated</h4>
                 <p style="margin-bottom: 15px;">Get IT insights delivered to your inbox</p>
-                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true">`n                    <input type="hidden" name="form-name" value="newsletter">`n                    <input type="email" name="email" placeholder="Your email" required aria-label="Email for newsletter">
+                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <input type="email" name="email" placeholder="Your email" required aria-label="Email for newsletter">
                     <button type="submit" aria-label="Subscribe to newsletter">
                         Subscribe
                     </button>

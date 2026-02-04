@@ -637,14 +637,18 @@ window.addEventListener('scroll', unifiedScrollHandler);
 // =================================================================
 // Network Canvas Animation
 // =================================================================
-const canvas = document.getElementById("networkCanvas");
-if (canvas) {
+function initNetworkCanvas() {
+    if (!document.body.classList.contains('home-page')) return;
+    const canvas = document.getElementById("networkCanvas");
+    if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     let width, height;
     let particles = [];
 
     // Optimization: State flags
     let isAnimating = false;
+    let isIntersecting = false;
     let lastTime = 0;
     const fpsInterval = 1000 / 30; // Limit to 30 FPS for performance
 
@@ -734,16 +738,22 @@ if (canvas) {
         drawScene();
     }
 
+    function startIfAllowed() {
+        if (prefersReducedMotion.matches) return;
+        if (!isIntersecting || document.visibilityState !== 'visible') return;
+        if (!isAnimating) {
+            isAnimating = true;
+            lastTime = performance.now();
+            animate(lastTime);
+        }
+    }
+
     // Performance & Accessibility Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Only animate if visible AND user hasn't requested reduced motion
-            if (entry.isIntersecting && !prefersReducedMotion.matches) {
-                if (!isAnimating) {
-                    isAnimating = true;
-                    lastTime = performance.now();
-                    animate(lastTime);
-                }
+            isIntersecting = entry.isIntersecting;
+            if (isIntersecting) {
+                startIfAllowed();
             } else {
                 isAnimating = false;
             }
@@ -752,6 +762,27 @@ if (canvas) {
 
     observer.observe(canvas);
 
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            isAnimating = false;
+        } else {
+            startIfAllowed();
+        }
+    });
+
     // Initial render (ensures something is visible even if paused/reduced motion)
     drawScene();
 }
+
+function scheduleNetworkCanvasInit() {
+    if (!document.body.classList.contains('home-page')) return;
+    const start = () => initNetworkCanvas();
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => requestAnimationFrame(start), { timeout: 200 });
+    } else {
+        requestAnimationFrame(() => setTimeout(start, 150));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', scheduleNetworkCanvasInit);
