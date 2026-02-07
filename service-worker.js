@@ -1,9 +1,9 @@
 // service-worker.js
 // BrightEdge IT - Service Worker for PWA Support
 
-const CACHE_NAME = 'brightedgeit-v1.0.5';
-const STATIC_CACHE = 'brightedgeit-static-v1.0.5';
-const DYNAMIC_CACHE = 'brightedgeit-dynamic-v1.0.5';
+const CACHE_NAME = 'brightedgeit-v1.0.7';
+const STATIC_CACHE = 'brightedgeit-static-v1.0.7';
+const DYNAMIC_CACHE = 'brightedgeit-dynamic-v1.0.7';
 
 // Files to cache immediately
 const STATIC_ASSETS = [
@@ -19,7 +19,7 @@ const STATIC_ASSETS = [
   '/favicon.png',
   '/manifest.json',
   '/assets/logo1.png',
-  '/assets/og-image.jpg'
+  '/assets/og-image.webp'
 ];
 
 // Install event - cache static assets

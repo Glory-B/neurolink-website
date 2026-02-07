@@ -5,11 +5,49 @@ const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileNav = document.getElementById('mobile-nav');
 
 if (mobileMenuBtn && mobileNav) {
+    const mobileDropdowns = mobileNav.querySelectorAll('.mobile-dropdown');
+    const mobileDropdownToggles = mobileNav.querySelectorAll('.mobile-dropdown-toggle');
+
+    function closeMobileDropdowns() {
+        mobileDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+            const toggle = dropdown.querySelector('.mobile-dropdown-toggle');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const dropdown = toggle.closest('.mobile-dropdown');
+            const isOpen = dropdown && dropdown.classList.contains('active');
+
+            closeMobileDropdowns();
+
+            if (!isOpen && dropdown) {
+                dropdown.classList.add('active');
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    function syncMobileNavState() {
+        const isOpen = mobileNav.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        if (!isOpen) {
+            closeMobileDropdowns();
+        }
+    }
+
+    // Ensure ARIA state is correct on initial load.
+    syncMobileNavState();
+
     mobileMenuBtn.addEventListener('click', () => {
-        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
         mobileNav.classList.toggle('active');
-        document.body.style.overflow = isExpanded ? '' : 'hidden';
+        syncMobileNavState();
     });
 
     // Close mobile menu when clicking outside
@@ -17,8 +55,7 @@ if (mobileMenuBtn && mobileNav) {
         if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
             if (mobileNav.classList.contains('active')) {
                 mobileNav.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
+                syncMobileNavState();
             }
         }
     });
@@ -27,8 +64,7 @@ if (mobileMenuBtn && mobileNav) {
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
             mobileNav.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            syncMobileNavState();
         }
     });
 }
@@ -418,31 +454,49 @@ function initNewsletterForms() {
     const newsletterForms = document.querySelectorAll('.newsletter-form');
 
     newsletterForms.forEach(form => {
+        // Ensure Netlify receives form-name even if markup was edited
+        if (!form.querySelector('input[name="form-name"]')) {
+            const hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.name = 'form-name';
+            hidden.value = form.getAttribute('name') || 'newsletter';
+            form.prepend(hidden);
+        }
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = form.querySelector('input[type="email"]');
             const submitBtn = form.querySelector('button[type="submit"]');
-            const email = emailInput.value.trim();
+            const email = emailInput ? emailInput.value.trim() : '';
 
-            // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showToast('Please enter a valid email address', 'error');
                 return;
             }
 
-            // Show loading state
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Subscribing...';
             submitBtn.disabled = true;
 
-            // Simulate subscription (replace with actual API call)
-            setTimeout(() => {
-                showToast('Thank you for subscribing! You\'ll receive our newsletter soon.');
-                form.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1000);
+            const formData = new FormData(form);
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+                .then(() => {
+                    showToast('Thank you for subscribing!');
+                    form.reset();
+                })
+                .catch(() => {
+                    showToast('Unable to subscribe right now. Please try again.', 'error');
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     });
 }
@@ -618,8 +672,8 @@ function updateSidebarActiveState() {
 
     tocLinks.forEach(link => {
         link.classList.remove('active');
-        const linkHref = link.getAttribute('onclick');
-        if (linkHref && linkHref.includes(current)) {
+        const linkHref = link.getAttribute('href');
+        if (linkHref && linkHref.startsWith('#') && linkHref.slice(1) === current) {
             link.classList.add('active');
         }
     });
@@ -643,7 +697,10 @@ function initNetworkCanvas() {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    let width, height;
+    const hero = canvas.parentElement;
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
     let particles = [];
 
     // Optimization: State flags
@@ -655,66 +712,173 @@ function initNetworkCanvas() {
     // Check reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // Configuration
-    const particleCount = 80;
-    const connectionDistance = 150;
-    const moveSpeed = 0.5;
+    // Color system from CSS variables (no hardcoded RGB)
+    const rootStyles = getComputedStyle(document.documentElement);
+    const brandPrimary = rootStyles.getPropertyValue('--color-brand-primary').trim();
+    const textMuted = rootStyles.getPropertyValue('--color-text-muted').trim();
+    const nodeColor = brandPrimary || getComputedStyle(document.body).color;
+    const lineColor = textMuted || nodeColor;
 
-    // Resize handling
-    function resize() {
-        width = canvas.width = canvas.parentElement.offsetWidth;
-        height = canvas.height = canvas.parentElement.offsetHeight;
-    }
-    window.addEventListener("resize", resize);
-    resize();
+    // Configuration
+    const connectionDistance = 160;
+    const baseSpeed = 0.55;
+    const maxSpeed = 0.95;
+    const interactionRadius = 140;
+    const interactionStrength = 0.035;
+    const pulseAmplitude = 0.18;
+    const wanderStrength = 0.020;
+    const wanderSpeed = 0.75;
+    const edgeFadeDistance = 140;
+
+    const mouse = { x: 0, y: 0, active: false };
 
     class Particle {
         constructor() {
+            this.reset();
+        }
+        reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * moveSpeed;
-            this.vy = (Math.random() - 0.5) * moveSpeed;
-            this.size = Math.random() * 2 + 1;
+            const angle = Math.random() * Math.PI * 2;
+            this.depth = 0.7 + Math.random() * 0.6;
+            const speed = baseSpeed * this.depth * (0.6 + Math.random() * 0.8);
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+            this.baseSize = Math.random() * 1.8 + 1.0;
+            this.pulseSpeed = 0.6 + Math.random() * 0.8;
+            this.pulsePhase = Math.random() * Math.PI * 2;
+            this.wanderPhase = Math.random() * Math.PI * 2;
         }
         update() {
+            // Individual wandering (AI vibe: more alive, less uniform)
+            const tt = performance.now() * 0.001 * wanderSpeed + this.wanderPhase;
+            this.vx += Math.sin(tt) * wanderStrength;
+            this.vy += Math.cos(tt) * wanderStrength;
+
+            if (mouse.active) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+                if (dist < interactionRadius && dist > 0.01) {
+                    const force = (1 - dist / interactionRadius) * interactionStrength;
+                    this.vx += (dx / dist) * force;
+                    this.vy += (dy / dist) * force;
+                }
+            }
+
             this.x += this.vx;
             this.y += this.vy;
+
             // Bounce off edges
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            // Subtle damping + speed clamp
+            this.vx *= 0.99;
+            this.vy *= 0.99;
+            const speed = Math.hypot(this.vx, this.vy);
+            if (speed > maxSpeed) {
+                this.vx = (this.vx / speed) * maxSpeed;
+                this.vy = (this.vy / speed) * maxSpeed;
+            }
         }
-        draw() {
-            ctx.fillStyle = "rgba(255, 107, 53, 0.6)"; // Orange dots matching brand color
+        draw(t, allowPulse, edgeFade) {
+            const pulse = allowPulse ? Math.sin(t * this.pulseSpeed + this.pulsePhase) : 0;
+            const size = this.baseSize * this.depth * (1 + pulse * pulseAmplitude);
+            const fade = edgeFade === undefined ? 1 : edgeFade;
+            const alpha = (0.68 + pulse * 0.10) * fade;
+            ctx.globalAlpha = alpha;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
             ctx.fill();
         }
     }
 
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    function computeParticleCount(w, h) {
+        const area = w * h;
+        let count = Math.round(area / 9000);
+        if (window.innerWidth <= 768) {
+            count = Math.round(count * 0.7);
+        }
+        return Math.max(45, Math.min(120, count));
     }
 
-    function drawScene() {
-        ctx.clearRect(0, 0, width, height);
+    function rebuildParticles(count) {
+        particles = [];
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+        }
+    }
 
-        // Update and draw particles
-        particles.forEach((p, index) => {
-            // Only update positions if motion is allowed
-            if (!prefersReducedMotion.matches) {
+    // Resize handling + DPR scaling
+    function resize() {
+        const rect = hero.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        if (!width || !height) return;
+
+        dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const targetCount = computeParticleCount(width, height);
+        if (particles.length !== targetCount) {
+            rebuildParticles(targetCount);
+        }
+    }
+    window.addEventListener("resize", resize);
+
+    // Mouse tracking (very light interaction)
+    hero.addEventListener('pointermove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = true;
+    }, { passive: true });
+
+    hero.addEventListener('pointerleave', () => {
+        mouse.active = false;
+    }, { passive: true });
+
+    function getEdgeFade(particle) {
+        const edge = Math.min(
+            particle.x,
+            width - particle.x,
+            particle.y,
+            height - particle.y
+        );
+        return Math.max(0, Math.min(1, edge / edgeFadeDistance));
+    }
+
+    function drawScene(currentTime) {
+        if (!width || !height) return;
+        const allowMotion = !prefersReducedMotion.matches;
+        const time = allowMotion ? (currentTime || performance.now()) * 0.001 : 0;
+
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = nodeColor;
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = 1.1;
+
+        particles.forEach((p) => {
+            if (allowMotion) {
                 p.update();
             }
-            p.draw();
-            // Draw connections
+            p.edgeFade = getEdgeFade(p);
+        });
+
+        particles.forEach((p, index) => {
+            p.draw(time, allowMotion, p.edgeFade);
+
             for (let j = index + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
                 if (dist < connectionDistance) {
-                    // Opacity based on distance (fades out as they get further)
-                    const alpha = 1 - dist / connectionDistance;
-                    ctx.strokeStyle = `rgba(255, 107, 53, ${alpha * 0.2})`;
-                    ctx.lineWidth = 1;
+                    const alpha = (1 - dist / connectionDistance) * 0.20 * Math.min(p.edgeFade, p2.edgeFade);
+                    ctx.globalAlpha = alpha;
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
@@ -722,6 +886,8 @@ function initNetworkCanvas() {
                 }
             }
         });
+
+        ctx.globalAlpha = 1;
     }
 
     function animate(currentTime) {
@@ -729,13 +895,12 @@ function initNetworkCanvas() {
 
         requestAnimationFrame(animate);
 
-        // Throttle logic
         const elapsed = currentTime - lastTime;
         if (elapsed < fpsInterval) return;
 
         lastTime = currentTime - (elapsed % fpsInterval);
 
-        drawScene();
+        drawScene(currentTime);
     }
 
     function startIfAllowed() {
@@ -771,8 +936,17 @@ function initNetworkCanvas() {
         }
     });
 
-    // Initial render (ensures something is visible even if paused/reduced motion)
-    drawScene();
+    prefersReducedMotion.addEventListener('change', () => {
+        if (prefersReducedMotion.matches) {
+            isAnimating = false;
+            drawScene(performance.now());
+        } else {
+            startIfAllowed();
+        }
+    });
+
+    resize();
+    drawScene(performance.now());
 }
 
 function scheduleNetworkCanvasInit() {
@@ -786,3 +960,18 @@ function scheduleNetworkCanvasInit() {
 }
 
 document.addEventListener('DOMContentLoaded', scheduleNetworkCanvasInit);
+
+// =================================================================
+// Service Worker Registration
+// =================================================================
+function initServiceWorkerRegistration() {
+    if (!('serviceWorker' in navigator)) return;
+
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {
+            // Fail silently to avoid noisy UX on unsupported/blocked contexts
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initServiceWorkerRegistration);
