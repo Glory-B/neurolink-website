@@ -629,7 +629,11 @@ nav {
 
 .home-page #testimonials.home-section {
     padding-top: 56px;
-    padding-bottom: 72px;
+    padding-bottom: 40px;
+}
+
+.home-page #contact.home-section {
+    padding-top: 36px;
 }
 
 .home-page .home-section .section-title {
@@ -648,29 +652,108 @@ nav {
 
 .home-page #about,
 .home-page #testimonials,
-.home-page .home-proof,
 .home-page #contact {
     content-visibility: auto;
     contain-intrinsic-size: 1px 800px;
+}
+
+.home-page .trust-band.home-section {
+    padding-top: 36px;
+    padding-bottom: 34px;
+}
+
+.home-page .trust-band .container {
+    text-align: left;
+}
+
+.home-page .trust-band .section-title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.home-page .trust-band .trust-band-list {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+
+.home-page .trust-band .trust-band-list li {
+    margin: 0;
+    padding-left: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.4;
+}
+
+.home-page .trust-band .trust-band-list li::before {
+    content: '\2713';
+    position: static;
+    color: var(--color-brand-primary);
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.home-page .trust-band .home-tech {
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.home-page .trust-band .home-tech-grid {
+    max-width: none;
+    width: 100%;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px 16px;
+}
+
+.home-page .trust-band .home-chip {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+}
+
+.home-page .healthcheck-strip.home-section {
+    padding-top: 24px;
+    padding-bottom: 64px;
 }
 
 .home-page .home-hero {
     padding: 120px 24px 170px;
 }
 
+.home-page .home-hero .cta-links {
+    gap: 18px;
+}
+
+.home-page .home-hero .cta-link {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    border-color: rgba(248, 250, 252, 0.75);
+    background: transparent;
+}
+
+.home-page .home-hero .cta-link:hover {
+    color: var(--color-text-primary);
+    border-color: rgba(248, 250, 252, 0.95);
+    background: rgba(255, 255, 255, 0.06);
+}
+
 .home-proof-pill {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: 24px;
-    padding: 8px 16px;
+    margin-top: 22px;
+    padding: 10px 18px;
     border-radius: var(--home-radius-pill);
     background: rgba(255, 107, 53, 0.12);
     border: var(--home-border);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-text-primary);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .home-proof-highlight {
@@ -766,87 +849,10 @@ nav {
     opacity: 0.85;
 }
 
-.home-proof {
-    background: linear-gradient(180deg, rgba(255, 107, 53, 0.08), rgba(15, 23, 42, 0.2));
-    border-top: 1px solid rgba(148, 163, 184, 0.12);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-}
-
-.home-proof-header {
-    margin-bottom: 36px;
-}
-
-.home-proof .section-subtitle {
-    margin-bottom: 40px;
-}
-
-.home-stats {
-    background: var(--home-bg-glass);
-    border: var(--home-border-subtle);
-    border-radius: var(--home-radius);
-    padding: 28px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.home-stats .stat-number {
-    font-size: 2.6rem;
-}
-
-.home-stats .stat-label {
-    letter-spacing: 0.08em;
-}
-
-.home-badges {
-    margin-top: 40px;
-}
-
-.home-badge {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: var(--home-radius);
-}
-
-.home-badge:hover {
-    border-color: rgba(255, 107, 53, 0.55);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 22px rgba(255, 107, 53, 0.12);
-}
-
-.home-badge-icon {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.home-badge-label {
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    margin: 0;
-}
-
 .home-testimonial-lead {
     font-weight: 700;
     color: var(--color-text-primary);
     margin-bottom: 10px;
-}
-
-.home-testimonial-result {
-    color: var(--color-text-secondary);
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-}
-
-.home-testimonial-list {
-    margin-bottom: 10px;
-}
-
-@media (max-width: 900px) {
-    .home-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
@@ -866,15 +872,41 @@ nav {
 
     .home-page #testimonials.home-section {
         padding-top: 48px;
-        padding-bottom: 56px;
+        padding-bottom: 44px;
+    }
+
+    .home-page #contact.home-section {
+        padding-top: 32px;
     }
 
     .home-page .home-hero {
-        padding: 110px 20px 140px;
+        padding: 110px 20px 128px;
+    }
+
+    .home-page .trust-band.home-section {
+        padding-top: 16px;
+        padding-bottom: 26px;
+    }
+
+    .home-page .trust-band .trust-band-list {
+        flex-wrap: wrap;
+        white-space: normal;
+        overflow-x: visible;
     }
 }
 
 @media (max-width: 600px) {
+    .home-page .services-grid,
+    .home-page .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .home-page .service-card,
+    .home-page .testimonial-card {
+        padding: 28px 22px;
+    }
+
     .home-tech-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -882,19 +914,29 @@ nav {
     .home-chip {
         white-space: normal;
     }
-
-    .home-proof-pill {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .home-stats {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 420px) {
+    .home-page .service-card,
+    .home-page .testimonial-card {
+        padding: 24px 18px;
+    }
+
+    .home-proof-pill {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    .home-proof-text {
+        display: block;
+        width: 100%;
+    }
+
     .home-tech-grid {
         grid-template-columns: 1fr;
     }
@@ -3274,7 +3316,7 @@ footer {
     color: var(--color-brand-hover);
     text-decoration: underline;
 }
-\n/* =================================================================
+/* =================================================================
    Footer Icon Styling
    ================================================================= */
 .footer-icon {
@@ -3536,7 +3578,7 @@ footer {
 }
 
 .hc-callout-list li::before {
-    content: '✓';
+    content: '\2713';
     position: absolute;
     left: 0;
     color: var(--color-brand-primary);
@@ -3581,7 +3623,7 @@ footer {
 }
 
 .hc-benefits li::before {
-    content: '✓';
+    content: '\2713';
     color: var(--color-brand-primary);
     font-weight: 600;
     font-size: 0.85rem;
@@ -3949,7 +3991,7 @@ footer {
 }
 
 .pr-callout-list li::before {
-    content: '✓';
+    content: '\2713';
     position: absolute;
     left: 0;
     color: var(--color-brand-primary);
@@ -4093,3 +4135,58 @@ footer {
     }
 }
 
+
+/* =================================================================
+   Top Contact Bar
+   ================================================================= */
+.home-page .top-bar {
+    display: none !important;
+}
+
+.top-bar a:hover {
+    color: var(--color-brand-primary) !important;
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        display: none !important;
+    }
+}
+
+/* =================================================================
+   Service Card Thumbnails
+   ================================================================= */
+.service-card-thumb img {
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.service-card:hover .service-card-thumb img {
+    opacity: 1 !important;
+    transform: scale(1.05);
+}
+
+/* Hero background photos sit behind content */
+.hero > img[style*="position: absolute"] {
+    z-index: 0;
+}
+
+.hero > .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Service section photos on services page */
+.service-section img {
+    transition: transform 0.4s ease;
+}
+
+.service-section:hover img {
+    transform: scale(1.02);
+}
+
+/* Photo grid responsive */
+@media (max-width: 640px) {
+    .service-card-thumb {
+        height: 90px !important;
+    }
+}
