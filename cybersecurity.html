@@ -65,18 +65,19 @@
 </head>
 
 <body>
+    <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Navigation -->
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="index.html" class="logo">
                 <img src="assets/logo1.webp" alt="BrightEdge IT Logo" width="1024" height="682" decoding="async">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li class="dropdown">
-                    <a href="services.html" class="active" aria-current="page" aria-haspopup="true"
-                        aria-expanded="false">Services</a>
+                    <a href="services.html" class="nav-link active" aria-current="page" aria-haspopup="true" aria-expanded="false">Services</a>
                     <div class="dropdown-content">
                         <a href="cloud-solutions.html">Cloud Solutions</a>
                         <a href="cybersecurity.html">Cybersecurity</a>
@@ -88,18 +89,18 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="pricing.html" aria-haspopup="true" aria-expanded="false">Pricing</a>
+                    <a href="pricing.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Pricing</a>
                     <div class="dropdown-content">
                         <a href="pricing.html">Pricing Packages</a>
                         <a href="health-check.html">Free IT Health Check</a>
                     </div>
                 </li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
