@@ -1,9 +1,9 @@
 // service-worker.js
 // BrightEdge IT - Service Worker for PWA Support
 
-const CACHE_NAME = 'brightedgeit-v1.0.7';
-const STATIC_CACHE = 'brightedgeit-static-v1.0.7';
-const DYNAMIC_CACHE = 'brightedgeit-dynamic-v1.0.7';
+const CACHE_NAME = 'brightedgeit-v1.0.8';
+const STATIC_CACHE = 'brightedgeit-static-v1.0.8';
+const DYNAMIC_CACHE = 'brightedgeit-dynamic-v1.0.8';
 
 // Files to cache immediately
 const STATIC_ASSETS = [

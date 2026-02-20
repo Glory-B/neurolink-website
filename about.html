@@ -70,7 +70,7 @@
     </script>
 </head>
 
-<body>
+<body class="about-page">
     <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -194,19 +194,58 @@
             </div>
         </section>
 
-        <!-- Culture Photo -->
-        <section style="padding: 40px 20px;">
-            <div class="container" style="max-width: 1100px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/10; border: 1px solid var(--color-border-subtle);">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80"
-                             alt="Team planning meeting around whiteboard" loading="lazy" decoding="async" width="600" height="375"
-                             style="width: 100%; height: 100%; object-fit: cover;">
+        <!-- Founder Section -->
+        <section class="founder-authority">
+            <div class="container">
+                <div class="founder-authority-grid reveal">
+                    <aside class="founder-authority-profile">
+                        <div class="founder-authority-photo-wrap">
+                            <img src="assets/glory-profile.jpg"
+                                alt="Glory Bahigwa, Founder and Director of BrightEdge IT" class="founder-authority-photo"
+                                width="1290" height="1946" loading="lazy" decoding="async">
+                        </div>
+                        <div class="founder-authority-badges" aria-label="Founder credibility highlights">
+                            <div class="founder-authority-badge">10+ Years Experience</div>
+                            <div class="founder-authority-badge">US &amp; APAC</div>
+                            <div class="founder-authority-badge">Private &amp; Government</div>
+                            <div class="founder-authority-badge">Perth-based</div>
+                        </div>
+                    </aside>
+                    <div class="founder-authority-copy">
+                        <h2 class="section-title">Meet the Founder</h2>
+                        <p>Glory Bahigwa is the Founder of BrightEdge IT &mdash; a Perth-based IT support and cybersecurity
+                            partner built for small businesses that need reliable outcomes.</p>
+                        <p>With over 10 years of experience across Australia, the US, and APAC &mdash; spanning private and
+                            government sectors &mdash; Glory brings practical, enterprise-grade thinking to local teams.</p>
+                        <ul class="founder-authority-list">
+                            <li>Direct access and clear communication</li>
+                            <li>Security-first support and delivery</li>
+                            <li>Microsoft 365, cloud, networking, and service desk expertise</li>
+                            <li>Local Perth support with long-term ownership</li>
+                        </ul>
+                        <div class="cta-links founder-authority-ctas">
+                            <a href="contact.html" class="cta-btn">Book a Discovery Call</a>
+                            <a href="services.html" class="cta-link">Explore Services</a>
+                        </div>
                     </div>
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/10; border: 1px solid var(--color-border-subtle);">
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Culture Photo -->
+        <section class="about-culture">
+            <div class="container about-culture-inner">
+                <div class="about-culture-grid">
+                    <div class="about-culture-card">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80"
+                              alt="Team planning meeting around whiteboard" loading="lazy" decoding="async" width="600" height="375"
+                             class="about-culture-image">
+                    </div>
+                    <div class="about-culture-card">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
-                             alt="Technology professionals collaborating on solution" loading="lazy" decoding="async" width="600" height="375"
-                             style="width: 100%; height: 100%; object-fit: cover;">
+                              alt="Technology professionals collaborating on solution" loading="lazy" decoding="async" width="600" height="375"
+                             class="about-culture-image">
                     </div>
                 </div>
             </div>
@@ -248,7 +287,7 @@
                     </div>
                 </div>
 
-                <h3 class="section-title" style="margin-top: 80px; font-size: 40px;">Our Core Values</h3>
+                <h3 class="section-title values-heading">Our Core Values</h3>
                 <div class="values-grid reveal">
                     <div class="value-card">
                         <span class="icon">
@@ -329,48 +368,8 @@
                 </div>
             </div>
         </section>
-        <!-- Founder-Led Team Section -->
-        <section class="team-section">
-            <div class="container">
-                <h2 class="section-title">Founder-Led Team</h2>
-                <p class="section-subtitle">Founder-led MSP based in Perth</p>
 
-                <div style="max-width: 980px; margin: 0 auto; display: grid; gap: 20px;">
-                    <p style="margin: 0; color: var(--color-text-secondary); text-align: center; font-size: 1.05rem;">
-                        BrightEdge IT is a small, hands-on team focused on support and project delivery for businesses that need practical outcomes, not complexity.
-                    </p>
-
-                    <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 22px;">
-                        <h3 style="margin: 0 0 12px; color: var(--color-text-primary);">How we work</h3>
-                        <ul class="feature-list" style="margin: 0;">
-                            <li>Hands-on support + project delivery from a local Perth team</li>
-                            <li>Clear communication, practical recommendations, and documented outcomes</li>
-                            <li>No lock-in mindset: we earn trust through consistent delivery</li>
-                        </ul>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-                        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 16px;">
-                            <h4 style="margin: 0 0 6px; color: var(--color-text-primary); font-size: 1rem;">Microsoft 365</h4>
-                            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.95rem;">Email, identity, Teams, SharePoint, and secure collaboration.</p>
-                        </div>
-                        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 16px;">
-                            <h4 style="margin: 0 0 6px; color: var(--color-text-primary); font-size: 1rem;">Cloud &amp; Security</h4>
-                            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.95rem;">Practical cloud setup, security baselines, and backup readiness.</p>
-                        </div>
-                        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 16px;">
-                            <h4 style="margin: 0 0 6px; color: var(--color-text-primary); font-size: 1rem;">Business Networks</h4>
-                            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.95rem;">Reliable connectivity, devices, and infrastructure that just works.</p>
-                        </div>
-                        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border-subtle); border-radius: 12px; padding: 16px;">
-                            <h4 style="margin: 0 0 6px; color: var(--color-text-primary); font-size: 1rem;">Service Desk</h4>
-                            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.95rem;">Responsive support with clear ownership and follow-through.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Why Choose Us Section -->
+<!-- Why Choose Us Section -->
         <section class="why-choose-section">
             <div class="container">
                 <h2 class="section-title">Why Choose BrightEdge IT?</h2>
