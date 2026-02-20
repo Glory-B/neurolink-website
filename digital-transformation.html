@@ -55,6 +55,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon-152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
     <link rel="manifest" href="/manifest.json">
     <title>Digital Services - BrightEdge IT</title>
     <link rel="canonical" href="https://brightedgeit.com.au/digital-transformation.html">
@@ -63,6 +65,11 @@
 </style>
     <link rel="preload" href="style.min.css" as="style">
     <link rel="stylesheet" href="style.min.css">
+    <script async src="https://plausible.io/js/pa-lddVoPgvmweKFGVREUaLe.js"></script>
+    <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init();
+    </script>
 </head>
 
 <body>
@@ -110,20 +117,20 @@
         <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
             <a href="index.html">Home</a>
             <div class="mobile-dropdown">
-    <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
-        Services
-    </button>
-    <div class="mobile-dropdown-menu">
-        <a href="services.html">All Services</a>
-        <a href="cloud-solutions.html">Cloud Solutions</a>
-        <a href="cybersecurity.html">Cybersecurity</a>
-        <a href="data-analytics.html">Data Analytics</a>
-        <a href="it-infrastructure.html">IT Infrastructure</a>
-        <a href="servicedesk.html">IT Support</a>
-        <a href="ai-solutions.html">AI Solutions</a>
-        <a href="digital-transformation.html">Digital Services</a>
-    </div>
-</div>
+                <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
+                    Services
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="services.html">All Services</a>
+                    <a href="cloud-solutions.html">Cloud Solutions</a>
+                    <a href="cybersecurity.html">Cybersecurity</a>
+                    <a href="data-analytics.html">Data Analytics</a>
+                    <a href="it-infrastructure.html">IT Infrastructure</a>
+                    <a href="servicedesk.html">IT Support</a>
+                    <a href="ai-solutions.html">AI Solutions</a>
+                    <a href="digital-transformation.html">Digital Services</a>
+                </div>
+            </div>
             <div class="mobile-dropdown">
                 <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
                     Pricing
@@ -432,7 +439,7 @@
             <li>Ongoing support and documentation</li>
           </ol>
           <div style="margin-top: 12px;">
-            <a href="contact.html" class="cta-btn" style="display: inline-flex;">Book a Free Consult</a>
+            <a href="contact.html" class="cta-btn" style="display: inline-flex;" onclick="plausible('book_consultation')">Book a Free Consult</a>
             <a href="health-check.html" class="cta-btn-secondary" style="display: inline-flex; margin-left: 10px;">Free IT Health Check</a>
           </div>
         </div>
@@ -561,7 +568,7 @@
             <div class="footer-section newsletter-section">
                 <h4>Stay Updated</h4>
                 <p style="margin-bottom: 15px;">Get IT insights delivered to your inbox</p>
-                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true" onsubmit="plausible('lead_form_submit')">
                     <input type="hidden" name="form-name" value="newsletter">
                     <input type="email" name="email" placeholder="Your email" required aria-label="Email for newsletter">
                     <button type="submit" aria-label="Subscribe to newsletter">
@@ -609,7 +616,7 @@
     </footer>
 
     <script src="script.min.js" defer></script>
-    <a href="tel:0431644181" class="mobile-call-btn" aria-label="Call us now">
+    <a href="tel:0431644181" onclick="plausible('phone_click')" class="mobile-call-btn" aria-label="Call us now">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
@@ -620,3 +627,7 @@
 </body>
 
 </html>
+
+
+
+

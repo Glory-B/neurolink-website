@@ -1,11 +1,11 @@
 {
   "name": "BrightEdge IT",
   "short_name": "BrightEdge",
-  "description": "Premier IT consulting and services company specializing in cloud solutions, cybersecurity, data analytics, and digital transformation",
+  "description": "Reliable IT support and cybersecurity for Perth small businesses.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#ff6b35",
+  "background_color": "#0b0f19",
+  "theme_color": "#0f172a",
   "orientation": "portrait-primary",
   "icons": [
     {

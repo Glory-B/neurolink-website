@@ -778,6 +778,59 @@ body:not(.home-page) .top-bar+nav {
     font-size: 0.8rem;
 }
 
+.home-page .home-accent-divider {
+    position: relative;
+    width: min(94%, 1180px);
+    height: 22px;
+    margin: 22px auto 30px;
+}
+
+.home-page .home-accent-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+            rgba(255, 107, 53, 0) 0%,
+            rgba(255, 107, 53, 0.35) 12%,
+            rgba(255, 107, 53, 0.92) 50%,
+            rgba(255, 107, 53, 0.35) 88%,
+            rgba(255, 107, 53, 0) 100%);
+}
+
+.home-page .home-accent-divider::after {
+    content: "";
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 12px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 107, 53, 0.26) 0%,
+            rgba(255, 107, 53, 0.1) 45%,
+            rgba(255, 107, 53, 0) 100%);
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .home-page .home-accent-divider {
+        width: min(90%, 680px);
+        margin: 18px auto 24px;
+    }
+
+    .home-page .home-accent-divider::after {
+        left: 8%;
+        right: 8%;
+    }
+}
+
 .home-page .healthcheck-strip.home-section {
     padding-top: 24px;
     padding-bottom: 64px;

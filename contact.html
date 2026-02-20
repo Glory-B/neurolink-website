@@ -51,6 +51,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon-152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
     <link rel="manifest" href="/manifest.json">
     <title>Contact BrightEdge IT for Perth Businesses | BrightEdge IT</title>
     <link rel="canonical" href="https://brightedgeit.com.au/contact.html">
@@ -60,6 +62,11 @@
 
     <link rel="preload" href="style.min.css" as="style">
     <link rel="stylesheet" href="style.min.css">
+    <script async src="https://plausible.io/js/pa-lddVoPgvmweKFGVREUaLe.js"></script>
+    <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init();
+    </script>
 </head>
 
 <body>
@@ -107,29 +114,29 @@
         <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
             <a href="index.html">Home</a>
             <div class="mobile-dropdown">
-    <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
-        Services
-    </button>
-    <div class="mobile-dropdown-menu">
-        <a href="services.html">All Services</a>
-        <a href="cloud-solutions.html">Cloud Solutions</a>
-        <a href="cybersecurity.html">Cybersecurity</a>
-        <a href="data-analytics.html">Data Analytics</a>
-        <a href="it-infrastructure.html">IT Infrastructure</a>
-        <a href="servicedesk.html">IT Support</a>
-        <a href="ai-solutions.html">AI Solutions</a>
-        <a href="digital-transformation.html">Digital Services</a>
-    </div>
-</div>
+                <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
+                    Services
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="services.html">All Services</a>
+                    <a href="cloud-solutions.html">Cloud Solutions</a>
+                    <a href="cybersecurity.html">Cybersecurity</a>
+                    <a href="data-analytics.html">Data Analytics</a>
+                    <a href="it-infrastructure.html">IT Infrastructure</a>
+                    <a href="servicedesk.html">IT Support</a>
+                    <a href="ai-solutions.html">AI Solutions</a>
+                    <a href="digital-transformation.html">Digital Services</a>
+                </div>
+            </div>
             <div class="mobile-dropdown">
-    <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
-        Pricing
-    </button>
-    <div class="mobile-dropdown-menu">
-        <a href="pricing.html">Pricing Packages</a>
-        <a href="health-check.html">Free IT Health Check</a>
-    </div>
-</div>
+                <button class="mobile-dropdown-toggle" type="button" aria-expanded="false">
+                    Pricing
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="pricing.html">Pricing Packages</a>
+                    <a href="health-check.html">Free IT Health Check</a>
+                </div>
+            </div>
             <a href="about.html">About</a>
             <a href="testimonials.html">Testimonials</a>
             <a href="contact.html">Contact</a>
@@ -182,7 +189,7 @@
                         </span>
                         <h3>Call Us</h3>
                         <p>Speak directly with our team for immediate assistance</p>
-                        <a href="tel:0431644181" class="method-link">0431 644 181 &rarr;</a>
+                        <a href="tel:0431644181" onclick="plausible('phone_click')" class="method-link">0431 644 181 &rarr;</a>
                     </div>
 
                     <div class="method-card">
@@ -225,7 +232,7 @@
                         </span>
                         <h3>Schedule a Meeting</h3>
                         <p>Book a consultation with our experts</p>
-                        <a href="#contact-form" class="method-link">Book Now &rarr;</a>
+                        <a href="#contact-form" class="method-link" onclick="plausible('book_consultation')">Book Now &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +248,7 @@
                 <p class="contact-form-helper">Not sure where to start? <a href="health-check.html">Get a Free IT Health
                         Check</a>.</p>
 
-                <form class="contact-form reveal" id="contact-form" name="contact" method="POST" data-netlify="true"
+                <form class="contact-form reveal" id="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="plausible('lead_form_submit')"
                     netlify-honeypot="bot-field" novalidate>
                     <input type="hidden" name="form-name" value="contact">
                     <p class="hidden">
@@ -521,7 +528,7 @@
             <div class="footer-section newsletter-section">
                 <h4>Stay Updated</h4>
                 <p class="newsletter-lead">Get IT insights delivered to your inbox</p>
-                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                <form class="newsletter-form" id="newsletter-form" name="newsletter" method="POST" data-netlify="true" onsubmit="plausible('lead_form_submit')">
                     <input type="hidden" name="form-name" value="newsletter">
                     <input type="email" name="email" placeholder="Your email" required
                         aria-label="Email for newsletter">
@@ -572,3 +579,7 @@
 </body>
 
 </html>
+
+
+
+
